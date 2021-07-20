@@ -1,31 +1,31 @@
 const express = require("express");
+const { v4: uuidv4 } = require("uuid");
 
 const app = express();
 
-app.get("/", (request, response) => {
-  return response.json({
-    message: "Hello World Rocketseat Ignite"
-  })
+app.use(express.json());
+
+const customers = [];
+/**
+ * Types received in the body req
+ * ssn - string
+ * name - string
+ * id - uuid
+ * statement - array
+ */
+
+app.post("/account", (request, response) => {
+  const { cpf, name } = request.body;
+  const id = uuidv4();
+  
+  customers.push ({
+    cpf,
+    name,
+    id,
+    statement: []
+  });
+
+  return response.status(201).send();
+
 });
 
-app.get("/courses", (request, response) => {
-  return response.json(["Course 1", "Course 2", "Course 3"]);
-});
-
-app.post("/courses/:id", (request, response) => {
-  return response.json(["Course 1", "Course 2", "Course 3", "Course 4"]);
-});
-
-app.put("/courses/:id", (request, response) => {
-  return response.json(["Course 6", "Course 2", "Course 3", "Course 4"]);
-});
-
-app.patch("/courses/:id", (request, response) => {
-  return response.json(["Course 6", "Course 7", "Course 3", "Course 4"]);
-});
-
-app.delete("/courses/:id", (request, response) => {
-  return response.json(["Course 6", "Course 2", "Course 4"]);
-});
-
-app.listen(3333);
