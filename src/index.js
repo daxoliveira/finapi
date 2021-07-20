@@ -6,9 +6,10 @@ const app = express();
 app.use(express.json());
 
 const customers = [];
+
 /**
  * Types received in the body req
- * ssn - string
+ * cpf - string
  * name - string
  * id - uuid
  * statement - array
@@ -18,7 +19,7 @@ app.post("/account", (request, response) => {
   const { cpf, name } = request.body;
   const id = uuidv4();
   
-  customers.push ({
+  customers.push({
     cpf,
     name,
     id,
@@ -29,3 +30,4 @@ app.post("/account", (request, response) => {
 
 });
 
+app.listen(3333);
