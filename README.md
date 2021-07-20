@@ -3,7 +3,7 @@
 ### Requirements
 
 The user should be able to:
-- [] Create an account
+- [x] Create an account
 - [] Request account statement
 - [] Deposit money
 - [] Withdraw money
@@ -15,7 +15,7 @@ The user should be able to:
 ### Business Rules
 
 The API should not be allowed to:
-- [] Create an account with existing SSN
+- [x] Create an account with existing CPF
 - [] Make a deposit in a non-existing account
 - [] Request an account statement from a non-existing account
 - [] Withdraw from a non-existing account
