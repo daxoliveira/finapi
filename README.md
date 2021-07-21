@@ -7,9 +7,9 @@ The user should be able to:
 - [x] Request account statement
 - [x] Deposit money
 - [x] Withdraw money
-- [] Access an account statement filtered by date
+- [x] Access an account statement filtered by date
 - [] Update account information
-- [] Retrieve data from account ???
+- [] Retrieve account information
 - [] Delete an account
 
 ### Business Rules
@@ -19,5 +19,5 @@ The API should not be allowed to:
 - [x] Request an account statement from a non-existing account
 - [x] Make a deposit in a non-existing account
 - [x] Withdraw with a negative balance
-- [] Withdraw from a non-existing account
+- [x] Withdraw from a non-existing account
 - [] Delete a non-existing account
