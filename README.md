@@ -8,8 +8,8 @@ The user should be able to:
 - [x] Deposit money
 - [x] Withdraw money
 - [x] Access an account statement filtered by date
-- [] Update account information
-- [] Retrieve account information
+- [x] Update account information
+- [x] Retrieve account information
 - [] Delete an account
 
 ### Business Rules
