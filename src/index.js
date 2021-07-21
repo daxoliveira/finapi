@@ -2,24 +2,32 @@ const express = require("express");
 const { v4: uuidv4 } = require("uuid");
 
 const app = express();
-
 app.use(express.json());
-
 const customers = [];
 
-/**
- * Types received in the body req
- * cpf - string
- * name - string
- * id - uuid
- * statement - array
- */
+/**Middleware*/
+function verifyIfExistsAccountCPF(request, response, next) {
+  const { cpf } = request.headers;
 
+  const customer = customers.find((customer) => customer.cpf === cpf);
+
+  if (!customer) {
+    return response.status(400).json({ error: "Customer already exists!" });
+  }
+
+  request.customer = customer;
+  
+  return next();
+}
+
+// *** CREATE ACCOUNT
+// Data types received in the body of the create acct req
+// cpf - string / name - string / id - uuid / statement - array
 app.post("/account", (request, response) => {
   const { cpf, name } = request.body;
 
   const customerAlreadyExists = customers.some(
-    (customers => customers.cpf === cpf)
+    (customer => customer.cpf === cpf)
   );
 
   if (customerAlreadyExists) {
@@ -37,11 +45,11 @@ app.post("/account", (request, response) => {
 
 });
 
-app.get("/statement", (request, response) => {
-  const { cpf } = request.headers;
-
-  const customer = customers.find((customer) => customer.cpf === cpf);
-
+// *** REQUEST STATEMENT
+// Headers usually contain information about the request configuration
+app.get("/statement", verifyIfExistsAccountCPF, (request, response) => {
+  const { customer } = request;
+  
   return response.json(customer.statement);
 })
 
