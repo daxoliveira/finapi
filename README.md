@@ -11,7 +11,7 @@ The user should be able to:
 - [x] Update account information
 - [x] Retrieve account information
 - [x] Delete an account
-- [] Request a balance
+- [x] Request account balance
 
 ### Business Rules
 
